@@ -1,7 +1,7 @@
 %\documentclass[a4,semhelv,landscape]{seminar}
 \documentclass[landscape]{slides}
 %\documentclass[pdf, default, slideBW, nocolorBG]{prosper}
-\usepackage[left=0.2cm,top=0.2cm,right=0.2cm,nohead,nofoot]{geometry}
+\usepackage[left=0.2cm,top=0.2cm,right=0.2cm,bottom=0.2cm,nohead,nofoot]{geometry}
 %\def\everyslide{\sffamily}
 %\usepackage{fullpage}
 \usepackage{graphicx}
@@ -23,7 +23,7 @@
 %Slide 0 - title
 \begin{slide}
 \begin{center}
-\large{\textbf{Modeling Structural RNA Families \\ Using Covariance Models}}
+\large{\textbf{Modeling Structural RNA Families \\ with Infernal}}
 
 \normalsize
 
@@ -41,7 +41,7 @@ Sean Eddy's Lab
 
 \begin{tabular}{c}
 Howard Hughes Medical Institute \\ 
-Janelia Farm Research Campus \\
+Janelia Research Campus \\
 \\
 %Deparment of Genetics \\
 %Washington University in St. Louis \\
@@ -54,94 +54,6 @@ Janelia Farm Research Campus \\
 \end{center}
 \end{slide}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{comment}
-\begin{slide}
-
-\large
-\begin{center}
-\large{\textbf{Problems in RNA sequence analysis} \\
-\begin{center}
-
-\normalsize
-
-\textbf{Non-coding RNA genes function directly as RNAs}
-
-\textbf{Functional RNAs} genes that function directly as RNAs
-\end{center}
-\end{slide}
-\end{comment}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{slide}
-%\center{\includegraphics[width=10.8425in]{figs/genome-1kb-black}}
-\center{\includegraphics[height=8.34in]{figs/genome-1kb-black}}
-\end{slide}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{slide}
-\center{\includegraphics[height=8.34in]{figs/genome-1kb}}
-\end{slide}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{comment}
-\begin{slide}
-\center{\includegraphics[height=8.34in]{figs/genome-10kb}}
-\end{slide}
-\end{comment}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{slide}
-\center{\includegraphics[height=8.34in]{figs/genome-100kb}}
-\end{slide}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{comment}
-\begin{slide}
-\center{\includegraphics[height=8.34in]{figs/genome-full}}
-\end{slide}
-\end{comment}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{slide}
-\begin{center}
-\textbf{What are we looking for?}
-\end{center}
-\medskip
-
-\begin{center}
-\begin{tabular}{rl}
-Protein-coding genes: & DNA $\rightarrow$ mRNA $\rightarrow$ protein \\
-& \\
-\textcolor{red}{Functional RNA genes:} & \textcolor{red}{DNA $\rightarrow$ RNA}
-\end{tabular}
-\medskip
-
-\medskip
-
-\medskip
-
-\medskip
-
-\medskip
-
-\textbf{How can we find genes?}
-
-{\bf By searching for similarity with known genes \\
-indicative of shared evolutionary history}
-
-\begin{tabular}{rl}
-Gene family: & group of evolutionarily related ({\em homologous}) \\
-& genes in different genomes \\
-& \\
-Homology search: & given one or more homologs of a \\
-& family, find more \\
-\end{tabular}
-
-%{\bf Functionally important sequence features are \\ evolutionarily conserved in
-%  homologs.}
-
-{\bf Homologous genes often share similar \\ functions, structures and
-  sequences}
-
-\end{center}
-
-\vfill
-\end{slide}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{slide}
 \begin{center}
@@ -201,7 +113,7 @@ and structural features to different degrees.}
 
 Conservation levels vary across alignment columns.
 
-\includegraphics[width=8.625in]{figs/seqstructprofiles-seq1}
+\includegraphics[width=10in]{figs/seqstructprofiles-seq1}
 \end{center}
 
 \vfill
@@ -214,7 +126,29 @@ Conservation levels vary across alignment columns.
 
 Base-paired positions covary \\ to maintain Watson-Crick complementarity.
 
-\includegraphics[width=8.625in]{figs/seqstructprofiles-struct2}
+\includegraphics[width=10in]{figs/seqstructprofiles-struct2}
+\end{center}
+
+\vfill
+\end{slide}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{slide}
+\begin{center}
+\textbf{Amount of information in a profile can be measured in bits}
+\medskip
+
+\includegraphics[width=9in]{figs/seqstructprofiles-2014-seqinfo}
+\end{center}
+
+\vfill
+\end{slide}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{slide}
+\begin{center}
+\textbf{Structure contributes additional information from covariation}
+\medskip
+
+\includegraphics[width=9in]{figs/seqstructprofiles-2014-structinfo}
 \end{center}
 
 \vfill
@@ -227,7 +161,7 @@ Base-paired positions covary \\ to maintain Watson-Crick complementarity.
 \medskip
 
 \begin{center}
-\includegraphics[height=6.5in]{figs/avgscores}
+\includegraphics[height=6.5in]{figs/avgscores-rfam11}
 \end{center}
 
 \vfill
@@ -254,10 +188,11 @@ Base-paired positions covary \\ to maintain Watson-Crick complementarity.
   \\
   software   & {\sc HMMER}      & {\sc Infernal} \\ 
   \\
-  main use   & proteins         & RNAs \\ 
+  main use   & proteins,         & structural RNAs \\ 
+             & repetitive DNA elements &  \\
   \\
-  database   & {\sc Pfam}       & {\sc Rfam} \\
-             & (14831 families) & (2208 families) \\
+  databases  & {\sc Pfam} and \sc{Dfam}       & {\sc Rfam} \\
+             & (14831 and 1132 entries) & (2450 families) \\
   \\
 %  primary sequence & yes & yes \\
 %  \\
@@ -281,60 +216,6 @@ Base-paired positions covary \\ to maintain Watson-Crick complementarity.
 
 \end{slide}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{slide}
-\begin{center}
-%\textbf{profile HMMs and covariance models}
-\textbf{Profile HMMs: sequence family models built from alignments}
-\end{center}
-
-\center{\includegraphics[height=6.625in]{figs/hmm}}
-
-%An HMM generates ``homologous'' sequences.
-
-\end{slide}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{slide}
-\begin{center}
-%\textbf{profile HMMs and covariance models}
-\textbf{Profile HMMs: sequence family models built from alignments}
-\end{center}
-
-\center{\includegraphics[height=6.625in]{figs/hmm-given}}
-\end{slide}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{slide}
-\begin{center}
-%\textbf{profile HMMs and covariance models}
-\textbf{Profile HMMs: sequence family models built from alignments}
-\end{center}
-
-\center{\includegraphics[height=6.625in]{figs/hmm-worm}}
-\end{slide}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{slide}
-\begin{center}
-%\textbf{profile HMMs and covariance models}
-\textbf{Profile HMMs: sequence family models built from alignments}
-\end{center}
-
-\center{\includegraphics[height=6.625in]{figs/hmm-corn}}
-\end{slide}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{slide}
-\begin{center}
-%\textbf{profile HMMs and covariance models}
-\textbf{Covariance models (CMs) are built \\ from structure-annotated alignments}
-\end{center}
-
-\center{\includegraphics[width=7in]{figs/cmintro_bandcyk}}
-
-\center{\includegraphics[width=2in,angle=270]{figs/cm-graph-small}}
-
-\vfill
-
-\end{slide}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{slide}
 \begin{center}
 \textbf{Is the added complexity worth it? \\
@@ -402,72 +283,44 @@ Base-paired positions covary \\ to maintain Watson-Crick complementarity.
 \end{center}
 \medskip
 
-\center{\includegraphics[width=10in]{figs/roc1-jsm}}
+\center{\includegraphics[width=10in]{figs/roc-talk-rcb-2014-1}}
 
 \vfill 
 \end{slide}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{slide}
 \begin{center}
-
-\textbf{Over the last several years we've accelerated \\ HMMER and
-  Infernal by several orders of magnitude}
-\end{center}
-\medskip
-
-\center{\includegraphics[width=10in]{figs/roc2-jsm}}
-
-\vfill 
-\end{slide}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{slide}
-\begin{center}
-\textbf{MSV filter for faster profile HMM searches}
+\textbf{Exploit sequence-based conservation using HMM filters}
 \end{center}
 
-\medskip
+\center{\includegraphics[height=6in]{figs/filter-2014-1}}
 
-\begin{itemize}
-
-\small
-\item MSV (Multiple Segment Viterbi) algorithm, which disallows inserts
-  and deletes, can be computed using 16-fold vector parallelism with
-  low-precision (8-bit) scores\footnote{Eddy SR. PLoS Comp. Biol., 7:e1002195, 2011}.
-
-\end{itemize}
-
-\center{\includegraphics[height=4in]{figs/msv-trunc}}
-
-\vfill 
+\vfill
 \end{slide}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{slide}
-\begin{center}
-\textbf{HMM filters and constrained DP for faster CM searches}
-\end{center}
-
-\medskip
-
-\small
-\begin{itemize}
-\item Infernal uses HMMER's MSV filters as a first stage of a search
-  pipeline, but with a relaxed (more permissive) cutoff so divergent
-  sequences are not filtered out. 
-
-\item A profile HMM alignment is used to derive bands based on
-  the posterior probabilities that each target nucleotide aligns to
-  each state of the CM\footnote{Brown
-    MP. Proc. Int. Conf. Intell. Syst. Mol. Biol., 8:57-66. \\ Nawrocki,
-    PhD thesis, 2009}. 
-
-\item The HMM derived bands are enforced during the expensive
-  CM alignment stage to limit number of required calculations.
-\end{itemize}
-
-\vfill 
-\end{slide}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{slide}
+\begin{center}
+
+\textbf{Optimal alignment to an HMM}
+
+\includegraphics[height=6in]{figs/hmm_alignment2_layer2}
+\end{center}
+
+\vfill
+\end{slide}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{slide}
+\begin{center}
+
+\textbf{Posterior decoding of an HMM alignment gives confidence estimates}
+
+\includegraphics[height=6in]{figs/hmm_alignment2_layer3}
+\end{center}
+
+\vfill
+\end{slide}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{slide}
 \begin{center}
 
@@ -484,8 +337,7 @@ Base-paired positions covary \\ to maintain Watson-Crick complementarity.
 \end{center}
 \vfill
 \end{slide}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{slide}
 \begin{center}
 
@@ -503,7 +355,6 @@ Base-paired positions covary \\ to maintain Watson-Crick complementarity.
 \vfill
 \end{slide}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{slide}
 \begin{center}
 
@@ -520,99 +371,77 @@ Base-paired positions covary \\ to maintain Watson-Crick complementarity.
 \end{center}
 \vfill
 \end{slide}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{slide}
 \begin{center}
-\textbf{Emission parameters using a mixture Dirichlet
-  prior}\footnote{Durbin et al., \emph{Biological Sequence
-      Analysis}, Oxford Univ Press, 1998.}
+\textbf{Use HMMs as filters and to constrain CM alignment}
+\end{center}
+
+\center{\includegraphics[height=6in]{figs/filter-2014-2}}
+
+\vfill
+\end{slide}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{slide}
+\begin{center}
+
+\textbf{HMM-based acceleration makes Infernal 10,000 times faster}
+
 \end{center}
 \medskip
 
-\small
+\center{\includegraphics[width=10in]{figs/roc-talk-rcb-2014-2}}
 
-\begin{itemize}
-\item probability of generating (emitting) residue $a$ from match state $j$: 
-
-\begin{center}
-$e_{M_j} (a) = \sum\limits_k P(k|\mathbf{c}_j) \frac{c_{ja} +
-    \alpha_a^{k}}{\sum_{a'} (c_{ja'} + \alpha_a^{k})}$
-\end{center}
-
-\item where $\mathbf{c}_j$ are weighted counts of emissions 
-
-\item where $p_k$ are the prior probabilities of the mixture components
-
-\item and $P(k|\mathbf{c}_j)$ are the \emph{posterior mixture coefficients}:
-
-\begin{center}
-  $P(k|\mathbf{c}_j) = \frac{p_k P(\mathbf{c}_j|k)}{\sum_{k'}p_{k'}P(\mathbf{c}_j|k')}$
-\end{center}
-
-\item 
-$P(\mathbf{c}_j|k)$ is the probability of the observed counts
-($\mathbf{c}_j$) given the mixture component $k$:
-
-\begin{center}
-
-$P(\mathbf{c}_j|k) = \frac{(\sum_a c_{ja})!}{\prod_a c_{ja}!}
-  \frac{\prod_a \Gamma(c_{ja} + \alpha_a^{k})}{\sum_a c_{ja}+\alpha_a^{k}}
-  \frac{\Gamma(\sum_a \alpha_a^{k})}{\prod_a \Gamma(\alpha_a{^k})}$
-
-\end{center}
-
-\item Mixture components were estimated from large dataset of
-alignment columns, by maximum likelihood (by minimizing the
-log probability of $P(k|\mathbf{c}_j)$ given current parameters being
-estimated via conjugate gradient descent)\footnote{Sjolander et al,
-  Comput Appl Biosci 12: 327-345, 1996.}.
-
-\end{itemize}
-
-\vfill
+\vfill 
 \end{slide}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{slide}
-
-\large
 \begin{center}
-\large{\textbf{Acknowledgements}} \\
 
-\vspace{0.5in}
-
-\normalsize
-%\begin{tabular}{llllll}
-%Sean Eddy           & & & & & Michael Brent \\ 
-%Elena Rivas         & & & & & Jeremy Buhler \\
-%Tom Jones           & & & & & Justin Fay \\
-%Diana Kolbe         & & & & & Jeff Gordon \\
-%Seolkyoung Jung     & & & & & Rob Mitra \\
-%Sergi Castellano    & & & & & Gary Stormo \\
-%Fred Davis          & & & & & \\
-%Lee Henry           & & & & & \\
-%Michael Farrar      & & & & & \\
-%Travis Wheeler      & & & & & \\
-\begin{tabular}{l}
-Sean Eddy           \\
-Elena Rivas         \\
-Tom Jones           \\
-Diana Kolbe         \\
-Seolkyoung Jung     \\
-Sergi Castellano    \\
-Fred Davis          \\
-Lee Henry           \\
-Michael Farrar      \\
-Travis Wheeler      \\
-\end{tabular}
-
-\includegraphics[height=2.75in]{figs/jfrc-banner1}
+\textbf{Rfam's use of BLAST to accelerate Infernal search of large 270Gb Rfamseq database}
 
 \end{center}
 
-\vfill
+PICTURE HERE
+
+\vfill 
 \end{slide}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{slide}
+\begin{center}
+
+\textbf{Rfam 12.0: first release using Infernal without BLAST filters}
+
+\end{center}
+
+SUMMARY LINE FROM TABLE 1 HERE
+
+\vfill 
+\end{slide}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{slide}
+\begin{center}
+
+\textbf{An example family}
+
+\end{center}
+
+???
+
+\vfill 
+\end{slide}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{slide}
+\begin{center}
+
+\textbf{Rfam and Infernal-based genome/dataset annotation is simple}
+
+\end{center}
+
+???
+
+\vfill 
+\end{slide}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \end{document}
 
