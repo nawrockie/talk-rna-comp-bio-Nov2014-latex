@@ -39,60 +39,54 @@ Sean Eddy's Lab
 
 \small
 
-\begin{tabular}{c}
-Howard Hughes Medical Institute \\ 
-Janelia Research Campus \\
-\\
+%\begin{tabular}{c}
+%Howard Hughes Medical Institute \\ 
+%Janelia Research Campus \\
+%\\
 %Deparment of Genetics \\
 %Washington University in St. Louis \\
 %\\
-\end{tabular}
+%\end{tabular}
 
-\vspace{0.1in}
+%\vspace{0.1in}
 
-\includegraphics[width=2.5in]{figs/janelia-logo}
+%\includegraphics[width=2.5in]{figs/janelia-logo}
+\includegraphics[width=4in]{figs/jrc-color}
 \end{center}
 \end{slide}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{slide}
 \begin{center}
-{\bf Most proteins and RNAs adopt a conserved 3-dimensional 
-  structure that is responsible for their function in the cell}
 
 \medskip
 
-Three representations of a transfer RNA:
+\medskip
 
 %\includegraphics[width=10.5in]{figs/trna-123}
 \includegraphics[width=9in]{figs/trna-123}
-
 \end{center}
 
-\vfill
+%\vfill
 
 \end{slide}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{slide}
 \begin{center}
-{\bf Most proteins and RNAs adopt a conserved 3-dimensional 
-  structure that is responsible for their function in the cell}
-
-\medskip
-
-Three representations of a transfer RNA:
-
-%\includegraphics[width=10.5in]{figs/trna-123}
-\includegraphics[width=9in]{figs/trna-123}
-
-{\bf BLAST:} given a single sequence, search genomes for similar sequences.
-
-%{\bf Homologous proteins and RNAs conserve \\ both sequence
-%and structural features}
-
-{\bf Homologous proteins and RNAs conserve different sequence \\
-and structural features to different degrees.}
+\textbf{BLAST is a popular tool for RNA homology search}
 \end{center}
+
+\small
+\begin{itemize}
+\item given a single sequence, search genomes for similar sequences
+
+\item primary tool used for human and mouse ncRNA annotation
+  (CITATIONS)
+
+\item downside 1: BLAST ignores varying conservation levels
+  across the gene
+
+\item downside 2: BLAST ignores structure
+\end{itemize}
 
 \vfill
 
@@ -102,15 +96,8 @@ and structural features to different degrees.}
 \begin{center}
 %\textbf{Comparative analysis of sequence families}: \\
 \textbf{Sequence conservation provides \\ information for homology searches}
-%\emph{Functionally important sequence features are evolutionarily conserved.}
+
 \medskip
-
-%A simple, made-up RNA family:
-
-%Evolution conserves functionally \\ important sequence features.
-
-%Evolution conserves sequence \\ based on its functional importance.
-
 Conservation levels vary across alignment columns.
 
 \includegraphics[width=10in]{figs/seqstructprofiles-seq1}
@@ -131,6 +118,10 @@ Base-paired positions covary \\ to maintain Watson-Crick complementarity.
 
 \vfill
 \end{slide}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{comment}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{slide}
 \begin{center}
@@ -153,6 +144,10 @@ Base-paired positions covary \\ to maintain Watson-Crick complementarity.
 
 \vfill
 \end{slide}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{comment}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{slide}
 \begin{center}
@@ -290,7 +285,7 @@ Base-paired positions covary \\ to maintain Watson-Crick complementarity.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{slide}
 \begin{center}
-\textbf{Exploit sequence-based conservation using HMM filters}
+\textbf{Filter target database using profile HMMs}
 \end{center}
 
 \center{\includegraphics[height=6in]{figs/filter-2014-1}}
@@ -301,7 +296,7 @@ Base-paired positions covary \\ to maintain Watson-Crick complementarity.
 \begin{slide}
 \begin{center}
 
-\textbf{Optimal alignment to an HMM}
+\textbf{Accelerating CM alignment step 1: \\ align sequence with HMM}
 
 \includegraphics[height=6in]{figs/hmm_alignment2_layer2}
 \end{center}
@@ -313,7 +308,8 @@ Base-paired positions covary \\ to maintain Watson-Crick complementarity.
 \begin{slide}
 \begin{center}
 
-\textbf{Posterior decoding of an HMM alignment gives confidence estimates}
+\textbf{Accelerating CM alignment step 2: \\ HMM posterior decoding to
+  get confidence estimates}
 
 \includegraphics[height=6in]{figs/hmm_alignment2_layer3}
 \end{center}
@@ -324,7 +320,7 @@ Base-paired positions covary \\ to maintain Watson-Crick complementarity.
 \begin{slide}
 \begin{center}
 
-\textbf{HMM bands accelerate CM alignment}
+\textbf{Accelerating CM alignment step 3: \\ use HMM alignment confidence to constrain CM alignment}
 \end{center}
 \medskip
 \small
@@ -341,7 +337,7 @@ Base-paired positions covary \\ to maintain Watson-Crick complementarity.
 \begin{slide}
 \begin{center}
 
-\textbf{HMM bands accelerate CM alignment}
+\textbf{Accelerating CM alignment step 3: \\ use HMM alignment confidence to constrain CM alignment}
 \end{center}
 \medskip
 \small
@@ -358,7 +354,7 @@ Base-paired positions covary \\ to maintain Watson-Crick complementarity.
 \begin{slide}
 \begin{center}
 
-\textbf{HMM bands accelerate CM alignment}
+\textbf{Accelerating CM alignment step 3: \\ use HMM alignment confidence to constrain CM alignment}
 \end{center}
 \medskip
 \small
@@ -398,26 +394,31 @@ Base-paired positions covary \\ to maintain Watson-Crick complementarity.
 \begin{slide}
 \begin{center}
 
-\textbf{Rfam's use of BLAST to accelerate Infernal search of large 270Gb Rfamseq database}
+\small
+
+\begin{tabular}{rl}
+Rfam 1.0 to 11.0 (2003 to 2012): & Rfam used BLAST filters to accelerate Infernal \\
+Rfam 12.0 (2014):                & first release without BLAST filters \\
+\end{tabular}
+
+Comparing sensitivity with and without BLAST filters for 200 randomly
+chosen families:
+
+%\begin{tabular}{rr|rr|rr}
+% new (h): 4222.2
+% old (h): 4069.8
+% new # hits: 201814
+% old # hits: 179681
+% new uniq:    22312
+% old uniq:       53
+%\end{tabular}
 
 \end{center}
 
-PICTURE HERE
-
-\vfill 
+\vfill
 \end{slide}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{slide}
-\begin{center}
-
-\textbf{Rfam 12.0: first release using Infernal without BLAST filters}
-
-\end{center}
-
-SUMMARY LINE FROM TABLE 1 HERE
-
-\vfill 
-\end{slide}
+\end{document}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{slide}
 \begin{center}
