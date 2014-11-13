@@ -262,7 +262,7 @@ Base-paired positions covary \\ to maintain Watson-Crick complementarity.
 \begin{slide}
 \begin{center}
 \large
-\textbf{Filter target database using profile HMMs}
+\textbf{Filter target database using profile HMMs\footnote{Weinberg, Ruzzo, RECOMB, 243-251, 2004}}
 \end{center}
 
 \center{\includegraphics[height=4in]{figs/filter-2014-1}}
@@ -273,7 +273,7 @@ Base-paired positions covary \\ to maintain Watson-Crick complementarity.
 \begin{slide}
 \begin{center}
 \large
-\textbf{Filter target database using profile HMMs}
+\textbf{Filter target database using profile HMMs\footnote{Weinberg, Ruzzo, RECOMB, 243-251, 2004}}
 \end{center}
 
 \center{\includegraphics[height=4in]{figs/filter-2014-1}}
@@ -389,32 +389,120 @@ Base-paired positions covary \\ to maintain Watson-Crick complementarity.
 \vfill 
 \end{slide}
 
-\end{document}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{slide}
 \begin{center}
 
-\textbf{Rfam: RNA families database}
+\textbf{Rfam used BLAST filters from 2003 to 2012}
 
 \end{center}
 
-\begin{itemize}
-\item 2450 families each represented by a manually curated \emph{seed}
-  alignment and CM
-\item Each release:
-\begin{itemize}
-  \item 
-  each CM is used to search Rfamseq, a large (270 Gb) database derived
-  from ENA (European Nucleotide Archive)
-  \item 
-  information on putative homologs identified is made available on Rfam website
-\end{itemize}
-\end{itemize}
+\center{\includegraphics[width=8in]{figs/rfam-search-1}}
 
+\vfill
+\end{slide}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{slide}
+\begin{center}
 
+\textbf{Rfam used BLAST filters from 2003 to 2012}
 
+\end{center}
 
+\center{\includegraphics[width=8in]{figs/rfam-search-2}}
 
+\vfill
+\end{slide}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{slide}
+\begin{center}
+
+\textbf{Rfam 12.0 (2014)\footnote{Nawrocki, Burge et. al, NAR 2014, in press} first release without BLAST filtering}
+\end{center}
+
+\center{\includegraphics[width=8in]{figs/rfam-search-3}}
+
+%\begin{center}
+%\small
+%Search results against Rfamseq for 200 random families:
+%\begin{tabular}{l|rrr}
+%strategy                   & time (h) & \# hits & \# unique hits \\ \hline
+%Old (BLAST + Infernal 1.0) & 4069.8   &  179681 & 53 \\
+%New (Infernal 1.1)         & 4222.2   &  201814 & 22312 \\
+%\end{tabular}
+%\end{center}
+
+\vfill
+\end{slide}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{slide}
+\begin{center}
+
+\textbf{Rfam 12.0 (2014)\footnote{Nawrocki, Burge et. al, NAR 2014, in press} first release without BLAST filtering}
+
+\end{center}
+
+\begin{center}
+Search results against Rfamseq for 200 random families:
+
+\medskip
+
+\begin{tabular}{l|r|r|r}
+strategy                   & time (h) & \# hits & \# unique hits \\ \hline
+& & & \\
+Old (BLAST + Infernal 1.0) & 4069.8   &  179,681 & 53 \\
+& & & \\
+New (Infernal 1.1)         & 4222.2   &  201,814 & 22,312 \\
+\end{tabular}
+\end{center}
+
+\vfill
+\end{slide}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{slide}
+
+\large
+\begin{center}
+\large{\textbf{Acknowledgements}} \\
+
+\vspace{0.5in}
+
+\normalsize
+%\begin{tabular}{llllll}
+%Sean Eddy           & & & & & Michael Brent \\ 
+%Elena Rivas         & & & & & Jeremy Buhler \\
+%Tom Jones           & & & & & Justin Fay \\
+%Diana Kolbe         & & & & & Jeff Gordon \\
+%Seolkyoung Jung     & & & & & Rob Mitra \\
+%Sergi Castellano    & & & & & Gary Stormo \\
+%Fred Davis          & & & & & \\
+%Lee Henry           & & & & & \\
+%Michael Farrar      & & & & & \\
+%Travis Wheeler      & & & & & \\
+\begin{tabular}{l|l}
+\textbf{Janelia} & \textbf{EBI (Rfam)} \\ \hline
+{\bf Sean Eddy}     & {\bf Alex Bateman} \\
+Elena Rivas         & {\bf Rob Finn} \\
+Travis Wheeler      & {\bf Sarah Burge} \\ 
+{\bf Tom Jones}     & {\bf Evan Floden} \\
+Diana Kolbe         & John Tate \\
+Seolkyoung Jung     & Jen Daub \\
+Rob Finn            & \\
+Jody Clements       & \\
+Fred Davis          & \\
+Lee Henry           & \\
+Michael Farrar      & \\
+\end{tabular}
+
+%\includegraphics[height=3in]{figs/jfrc-banner1}
+
+\end{center}
+
+\vfill
+\end{slide}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}
 
 
 \begin{tabular}{rl}
@@ -435,35 +523,3 @@ chosen families:
 %\end{tabular}
 
 \end{center}
-
-\vfill
-\end{slide}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\end{document}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{slide}
-\begin{center}
-
-\textbf{An example family}
-
-\end{center}
-
-???
-
-\vfill 
-\end{slide}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{slide}
-\begin{center}
-
-\textbf{Rfam and Infernal-based genome/dataset annotation is simple}
-
-\end{center}
-
-???
-
-\vfill 
-\end{slide}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\end{document}
-
